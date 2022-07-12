@@ -6,7 +6,7 @@
 #    By: amenadue <amenadue@student.42adel.org.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 16:56:57 by amenadue          #+#    #+#              #
-#    Updated: 2022/07/11 15:07:00 by amenadue         ###   ########.fr        #
+#    Updated: 2022/07/12 02:48:52 by amenadue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ MLX_DIR = mlx
 
 UNAME_S = $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	CCFLAGS += -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+	CCFLAGS += -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g3
 	MLX_DIR = mlx_linux
 endif
 ifeq ($(UNAME_S),Darwin)
-	CCFLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit
+	CCFLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit -g3
 	MLX_DIR = mlx_linux
 endif
 

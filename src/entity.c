@@ -6,7 +6,7 @@
 /*   By: amenadue <amenadue@student.42adel.org.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 10:43:27 by amenadue          #+#    #+#             */
-/*   Updated: 2022/07/11 18:09:48 by amenadue         ###   ########.fr       */
+/*   Updated: 2022/07/12 04:47:29 by amenadue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ int	isentity(char t)
 
 int	char_to_ent_type(char c)
 {
-	if (isentity(c))
-	{
-		return (0);
-	}
+	if (c == 'P')
+		return (1);
+	else if (c == 'C')
+		return (2);
+	else if (c == 'E')
+		return (3);
 	else
-		return (-1);
+		return (0);
 }
 
 void	new_entity(t_game *game, int type, int x, int y)
@@ -51,8 +53,9 @@ void	init_entities(t_game *game)
 	int	x;
 	int	y;
 
-	game->entities = (t_entity **) malloc(sizeof(t_entity *)
-			* game->entity_count);
+	game->entities = (t_entity **) ft_calloc((game->entity_count + 1),
+			sizeof(t_entity *));
+	game->entities[game->entity_count] = NULL;
 	y = 0;
 	while (y < game->map->height)
 	{
