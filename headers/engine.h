@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amenadue <amenadue@student.42adel.org.a    +#+  +:+       +#+        */
+/*   By: amenadue <amenadue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 09:09:34 by amenadue          #+#    #+#             */
-/*   Updated: 2022/07/12 13:38:56 by amenadue         ###   ########.fr       */
+/*   Updated: 2022/07/13 12:39:10 by amenadue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_instance
 }	t_game;
 
 int		good_exit(t_game *instance);
+int		bad_exit(t_game *instance);
 int		load_map(t_game *game, char **argv);
 int		control_scheme(int keycode, t_game *game);
 int		isentity(char t);
@@ -85,6 +86,10 @@ void	init_entities(t_game *game);
 void	render_backgorund(t_game *game);
 void	render_entity(t_game *game, t_entity *entity);
 void	render_frame(t_game *game);
+int		validate_size(t_game *game);
+int		validate_entities(t_game *game);
+int		validate_wall(t_game *game);
+int		validate_entries(t_game *game);
 int		check_for_errors(t_game *game);
 
 #endif

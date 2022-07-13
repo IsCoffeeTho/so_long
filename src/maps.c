@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maps.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amenadue <amenadue@student.42adel.org.a    +#+  +:+       +#+        */
+/*   By: amenadue <amenadue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 10:43:27 by amenadue          #+#    #+#             */
-/*   Updated: 2022/07/12 04:50:52 by amenadue         ###   ########.fr       */
+/*   Updated: 2022/07/13 12:40:32 by amenadue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static void	count_types(t_game *game)
 				game->entity_count++;
 			if (game->map->map_rows[y][x] == 'C')
 				game->win_threshold++;
-			if (game->map->map_rows[y][x] == 'E')
+			else if (game->map->map_rows[y][x] == 'E')
 				game->exitable = 1;
-			if (game->map->map_rows[y][x] == 'P')
+			else if (game->map->map_rows[y][x] == 'P')
 				game->playable = 1;
 			x++;
 		}
@@ -83,10 +83,24 @@ static int	append_map_row(t_game *game, char *row)
 	return (1);
 }
 
+int	check_mapfile(t_game *game, char *path)
+{
+	path = ft_strrchr(path, '.');
+	if (ft_strncmp(path, ".ber", 5))
+	{
+		ft_printf("\e[91m\e[1mError\e[0m %s\n",
+			"Bad file extension. please use a \e[1m.ber\e[0m file.");
+		bad_exit(game);
+	}
+	return (0);
+}
+
 int	load_map(t_game *game, char **v)
 {
 	char	*rowstr;
 
+	if (check_mapfile(game, v[1]))
+		return (0);
 	game->map = (t_map *) ft_calloc(1, sizeof(t_map));
 	game->map->fd = open(v[1], 0);
 	if (game->map->fd < 0)

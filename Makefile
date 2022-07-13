@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amenadue <amenadue@student.42adel.org.a    +#+  +:+       +#+         #
+#    By: amenadue <amenadue@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 16:56:57 by amenadue          #+#    #+#              #
-#    Updated: 2022/07/12 23:29:31 by amenadue         ###   ########.fr        #
+#    Updated: 2022/07/13 11:49:39 by amenadue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ ifeq ($(UNAME_S),Linux)
 	MLX_DIR = mlx_linux
 endif
 ifeq ($(UNAME_S),Darwin)
-	CCFLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit -g3
+	CCFLAGS += -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit -g3
 	MLX_DIR = mlx
 endif
 
